@@ -44,9 +44,9 @@ public class XmlaDatabaseCache implements XmlaOlap4jCache {
         JDBC_DRIVER("org.hsqldb.jdbcDriver"),
         /**
          * Jdbc url to use. Defaults to
-         * <code>jdbc:hsqldb:file:xmla-cache/xmla-cache-hsqldb</code>
+         * <code>jdbc:hsqldb:file:lib/xmla-cache-hsqldb</code>
          */
-        JDBC_URL("jdbc:hsqldb:file:xmla-cache/xmla-cache-hsqldb"),
+        JDBC_URL("jdbc:hsqldb:file:lib/xmla-cache-hsqldb"),
 
         /**
          * Jdbc username to use. Defaults to

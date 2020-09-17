@@ -14,7 +14,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-*/
+*//*
+
 package org.olap4j.driver.xmla;
 
 import org.olap4j.OlapException;
@@ -23,16 +24,20 @@ import org.olap4j.driver.xmla.proxy.XmlaOlap4jProxy;
 import java.sql.*;
 import java.util.*;
 
+*/
 /**
  * Implementation of {@link Factory} for JDBC 3.0.
  *
  * @author jhyde
  * @since Jun 14, 2007
- */
+ *//*
+
 class FactoryJdbc3Impl implements Factory {
-    /**
+    */
+/**
      * Creates a FactoryJdbc3Impl.
-     */
+     *//*
+
     public FactoryJdbc3Impl() {
     }
 
@@ -158,3 +163,4 @@ class FactoryJdbc3Impl implements Factory {
 }
 
 // End FactoryJdbc3Impl.java
+*/

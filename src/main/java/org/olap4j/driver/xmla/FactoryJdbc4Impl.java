@@ -14,7 +14,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-*/
+*//*
+
 package org.olap4j.driver.xmla;
 
 import org.olap4j.OlapException;
@@ -23,16 +24,20 @@ import org.olap4j.driver.xmla.proxy.XmlaOlap4jProxy;
 import java.sql.*;
 import java.util.*;
 
+*/
 /**
  * Implementation of {@link Factory} for JDBC 4.0.
  *
  * @author jhyde
  * @since Jun 14, 2007
- */
+ *//*
+
 class FactoryJdbc4Impl implements Factory {
-    /**
+    */
+/**
      * Creates a FactoryJdbc4Impl.
-     */
+     *//*
+
     public FactoryJdbc4Impl() {
     }
 
@@ -94,13 +99,15 @@ class FactoryJdbc4Impl implements Factory {
     private static class EmptyResultSetJdbc4
         extends FactoryJdbc4Plus.AbstractEmptyResultSet
     {
-        /**
+        */
+/**
          * Creates a EmptyResultSetJdbc4.
          *
          * @param olap4jConnection Connection
          * @param headerList Column names
          * @param rowList List of row values
-         */
+         *//*
+
         EmptyResultSetJdbc4(
             XmlaOlap4jConnection olap4jConnection,
             List<String> headerList,
@@ -113,7 +120,8 @@ class FactoryJdbc4Impl implements Factory {
     private static class XmlaOlap4jConnectionJdbc4
         extends FactoryJdbc4Plus.AbstractConnection
     {
-        /**
+        */
+/**
          * Creates a XmlaOlap4jConnectionJdbc4.
          *
          * @param factory Factory
@@ -122,7 +130,8 @@ class FactoryJdbc4Impl implements Factory {
          * @param url URL
          * @param info Extra properties
          * @throws SQLException on error
-         */
+         *//*
+
         public XmlaOlap4jConnectionJdbc4(
             Factory factory,
             XmlaOlap4jDriver driver,
@@ -137,12 +146,14 @@ class FactoryJdbc4Impl implements Factory {
     private static class XmlaOlap4jCellSetJdbc4
         extends FactoryJdbc4Plus.AbstractCellSet
     {
-        /**
+        */
+/**
          * Creates an XmlaOlap4jCellSetJdbc4.
          *
          * @param olap4jStatement Statement
          * @throws OlapException on error
-         */
+         *//*
+
         XmlaOlap4jCellSetJdbc4(
             XmlaOlap4jStatement olap4jStatement)
             throws OlapException
@@ -154,11 +165,13 @@ class FactoryJdbc4Impl implements Factory {
     private static class XmlaOlap4jStatementJdbc4
         extends XmlaOlap4jStatement
     {
-        /**
+        */
+/**
          * Creates a XmlaOlap4jStatementJdbc4.
          *
          * @param olap4jConnection Connection
-         */
+         *//*
+
         XmlaOlap4jStatementJdbc4(
             XmlaOlap4jConnection olap4jConnection)
         {
@@ -169,13 +182,15 @@ class FactoryJdbc4Impl implements Factory {
     private static class XmlaOlap4jPreparedStatementJdbc4
         extends FactoryJdbc4Plus.AbstractPreparedStatement
     {
-        /**
+        */
+/**
          * Creates a XmlaOlap4jPreparedStatementJdbc4.
          *
          * @param olap4jConnection Connection
          * @param mdx MDX query text
          * @throws OlapException on error
-         */
+         *//*
+
         XmlaOlap4jPreparedStatementJdbc4(
             XmlaOlap4jConnection olap4jConnection,
             String mdx) throws OlapException
@@ -187,11 +202,13 @@ class FactoryJdbc4Impl implements Factory {
     private static class XmlaOlap4jDatabaseMetaDataJdbc4
         extends FactoryJdbc4Plus.AbstractDatabaseMetaData
     {
-        /**
+        */
+/**
          * Creates an XmlaOlap4jDatabaseMetaDataJdbc4.
          *
          * @param olap4jConnection Connection
-         */
+         *//*
+
         XmlaOlap4jDatabaseMetaDataJdbc4(
             XmlaOlap4jConnection olap4jConnection)
         {
@@ -201,3 +218,4 @@ class FactoryJdbc4Impl implements Factory {
 }
 
 // End FactoryJdbc4Impl.java
+*/

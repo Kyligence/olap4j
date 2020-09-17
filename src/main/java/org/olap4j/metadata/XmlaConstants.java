@@ -17,36 +17,37 @@
 */
 package org.olap4j.metadata;
 
+import static org.olap4j.metadata.XmlaConstants.LiteralConstants.*;
+
 /**
  * Collection of various enumerations and constants defined by the XML for
  * Analysis (XMLA) and OLE DB for OLAP specifications.
  *
  * @author jhyde
  */
-public class XmlaConstants
-{
+public class XmlaConstants {
     // Suppresses default constructor, ensuring non-instantiability.
     private XmlaConstants() {
     }
 
     public enum VisualMode implements XmlaConstant {
         DEFAULT(
-            0,
-            "Provider-dependent. In Microsoft SQL Server 2000 Analysis "
-            + "Services, this is equivalent to "
-            + "DBPROPVAL_VISUAL_MODE_ORIGINAL."),
+                0,
+                "Provider-dependent. In Microsoft SQL Server 2000 Analysis "
+                        + "Services, this is equivalent to "
+                        + "DBPROPVAL_VISUAL_MODE_ORIGINAL."),
         VISUAL(
-            1,
-            "Visual totals are enabled."),
+                1,
+                "Visual totals are enabled."),
         ORIGINAL(
-            2,
-            "Visual totals are not enabled.");
+                2,
+                "Visual totals are not enabled.");
 
         private final int xmlaOrdinal;
         private final String description;
 
         private static final DictionaryImpl<VisualMode> DICTIONARY =
-            DictionaryImpl.forClass(VisualMode.class);
+                DictionaryImpl.forClass(VisualMode.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -59,8 +60,7 @@ public class XmlaConstants
         }
 
         VisualMode(
-            int xmlaOrdinal, String description)
-        {
+                int xmlaOrdinal, String description) {
             this.xmlaOrdinal = xmlaOrdinal;
             this.description = description;
         }
@@ -84,7 +84,7 @@ public class XmlaConstants
         DISCOVER_AND_EXECUTE;
 
         private static final DictionaryImpl<Method> DICTIONARY =
-            DictionaryImpl.forClass(Method.class);
+                DictionaryImpl.forClass(Method.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -117,7 +117,7 @@ public class XmlaConstants
         private final int xmlaOrdinal;
 
         private static final DictionaryImpl<Access> DICTIONARY =
-            DictionaryImpl.forClass(Access.class);
+                DictionaryImpl.forClass(Access.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -149,17 +149,17 @@ public class XmlaConstants
     public static enum AuthenticationMode implements XmlaConstant {
         Unauthenticated("no user ID or password needs to be sent."),
         Authenticated(
-            "User ID and Password must be included in the information required "
-            + "for the connection."),
+                "User ID and Password must be included in the information required "
+                        + "for the connection."),
         Integrated(
-            "the data source uses the underlying security to determine "
-            + "authorization, such as Integrated Security provided by "
-            + "Microsoft Internet Information Services (IIS).");
+                "the data source uses the underlying security to determine "
+                        + "authorization, such as Integrated Security provided by "
+                        + "Microsoft Internet Information Services (IIS).");
 
         private final String description;
 
         private static final DictionaryImpl<AuthenticationMode> DICTIONARY =
-            DictionaryImpl.forClass(AuthenticationMode.class);
+                DictionaryImpl.forClass(AuthenticationMode.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -192,13 +192,13 @@ public class XmlaConstants
         TDP("tabular data provider."),
         MDP("multidimensional data provider."),
         DMP(
-            "data mining provider. A DMP provider implements the OLE DB for "
-            + "Data Mining specification.");
+                "data mining provider. A DMP provider implements the OLE DB for "
+                        + "Data Mining specification.");
 
         private final String description;
 
         private static final DictionaryImpl<ProviderType> DICTIONARY =
-            DictionaryImpl.forClass(ProviderType.class);
+                DictionaryImpl.forClass(ProviderType.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -229,65 +229,65 @@ public class XmlaConstants
 
     public static enum Updateable implements XmlaConstant {
         MD_MASK_ENABLED(
-            0x00000000,
-            "The cell can be updated."),
+                0x00000000,
+                "The cell can be updated."),
 
         MD_MASK_NOT_ENABLED(
-            0x10000000,
-            "The cell cannot be updated."),
+                0x10000000,
+                "The cell cannot be updated."),
 
         CELL_UPDATE_ENABLED(
-            0x00000001,
-            "Cell can be updated in the cellset."),
+                0x00000001,
+                "Cell can be updated in the cellset."),
 
         CELL_UPDATE_ENABLED_WITH_UPDATE(
-            0x00000002,
-            "The cell can be updated with an update statement. The update may "
-            + "fail if a leaf cell is updated that is not write-enabled."),
+                0x00000002,
+                "The cell can be updated with an update statement. The update may "
+                        + "fail if a leaf cell is updated that is not write-enabled."),
 
         CELL_UPDATE_NOT_ENABLED_FORMULA(
-            0x10000001,
-            "The cell cannot be updated because the cell has a calculated "
-            + "member among its coordinates; the cell was retrieved with a set "
-            + "in the where clause. A cell can be updated even though a "
-            + "formula affects, or a calculated cell is on, the value of a "
-            + "cell (is somewhere along the aggregation path). In this "
-            + "scenario, the final value of the cell may not be the updated "
-            + "value, because the calculation will affect the result."),
+                0x10000001,
+                "The cell cannot be updated because the cell has a calculated "
+                        + "member among its coordinates; the cell was retrieved with a set "
+                        + "in the where clause. A cell can be updated even though a "
+                        + "formula affects, or a calculated cell is on, the value of a "
+                        + "cell (is somewhere along the aggregation path). In this "
+                        + "scenario, the final value of the cell may not be the updated "
+                        + "value, because the calculation will affect the result."),
 
         CELL_UPDATE_NOT_ENABLED_NONSUM_MEASURE(
-            0x10000002,
-            "The cell cannot be updated because non-sum measures (count, min, "
-            + "max, distinct count, semi-additive) can not be updated."),
+                0x10000002,
+                "The cell cannot be updated because non-sum measures (count, min, "
+                        + "max, distinct count, semi-additive) can not be updated."),
 
         CELL_UPDATE_NOT_ENABLED_NACELL_VIRTUALCUBE(
-            0x10000003,
-            "The cell cannot be updated because the cell does not exist as it "
-            + "is at the intersection of a measure and a dimension member "
-            + "unrelated to the measure’s measure group."),
+                0x10000003,
+                "The cell cannot be updated because the cell does not exist as it "
+                        + "is at the intersection of a measure and a dimension member "
+                        + "unrelated to the measure’s measure group."),
 
         CELL_UPDATE_NOT_ENABLED_SECURE(
-            0x10000005,
-            "The cell cannot be updated because the cell is secured."),
+                0x10000005,
+                "The cell cannot be updated because the cell is secured."),
 
         CELL_UPDATE_NOT_ENABLED_CALCLEVEL(
-            0x10000006,
-            "Reserved for future use."),
+                0x10000006,
+                "Reserved for future use."),
 
         CELL_UPDATE_NOT_ENABLED_CANNOTUPDATE(
-            0x10000007,
-            "The cell cannot be updated because of internal reasons."),
+                0x10000007,
+                "The cell cannot be updated because of internal reasons."),
 
         CELL_UPDATE_NOT_ENABLED_INVALIDDIMENSIONTYPE(
-            0x10000009,
-            "The cell cannot be updated because update is not supported in "
-            + "mining model, indirect, or data mining dimensions.");
+                0x10000009,
+                "The cell cannot be updated because update is not supported in "
+                        + "mining model, indirect, or data mining dimensions.");
 
         private final int xmlaOrdinal;
         private final String description;
 
         private static final Dictionary<Updateable> DICTIONARY =
-            DictionaryImpl.forClass(Updateable.class);
+                DictionaryImpl.forClass(Updateable.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -326,7 +326,7 @@ public class XmlaConstants
         private final int xmlaOrdinal;
 
         private static final Dictionary<FontFlag> DICTIONARY =
-            DictionaryImpl.forClass(FontFlag.class);
+                DictionaryImpl.forClass(FontFlag.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -382,7 +382,7 @@ public class XmlaConstants
         private final int xmlaOrdinal;
 
         private static final Dictionary<ActionType> DICTIONARY =
-            DictionaryImpl.forClass(ActionType.class);
+                DictionaryImpl.forClass(ActionType.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -433,7 +433,7 @@ public class XmlaConstants
         private final int xmlaOrdinal;
 
         private static final Dictionary<ActionType> DICTIONARY =
-            DictionaryImpl.forClass(ActionType.class);
+                DictionaryImpl.forClass(ActionType.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -470,29 +470,29 @@ public class XmlaConstants
         // The following values exactly match VARENUM
         // in Automation and may be used in VARIANT.
         I4(
-            "INTEGER", 3, "DBTYPE_I4", "A four-byte, signed integer: INTEGER"),
+                "INTEGER", 3, "DBTYPE_I4", "A four-byte, signed integer: INTEGER"),
 
         R8(
-            "DOUBLE", 5, "DBTYPE_R8",
-            "A double-precision floating-point value: Double"),
+                "DOUBLE", 5, "DBTYPE_R8",
+                "A double-precision floating-point value: Double"),
 
         CY(
-            "CURRENCY", 6, "DBTYPE_CY",
-            "A currency value: LARGE_INTEGER, Currency is a fixed-point number "
-            + "with four digits to the right of the decimal point. It is "
-            + "stored in an eight-byte signed integer, scaled by 10,000."),
+                "CURRENCY", 6, "DBTYPE_CY",
+                "A currency value: LARGE_INTEGER, Currency is a fixed-point number "
+                        + "with four digits to the right of the decimal point. It is "
+                        + "stored in an eight-byte signed integer, scaled by 10,000."),
 
         BOOL(
-            "BOOLEAN", 11, "DBTYPE_BOOL",
-            "A Boolean value stored in the same way as in Automation: "
-            + "VARIANT_BOOL; 0 means false and ~0 (bitwise, the value is not "
-            + "0; that is, all bits are set to 1) means true."),
+                "BOOLEAN", 11, "DBTYPE_BOOL",
+                "A Boolean value stored in the same way as in Automation: "
+                        + "VARIANT_BOOL; 0 means false and ~0 (bitwise, the value is not "
+                        + "0; that is, all bits are set to 1) means true."),
 
         /**
          * Used by SQL Server for value.
          */
         VARIANT(
-            "VARIANT", 12, "DBTYPE_VARIANT", "An Automation VARIANT"),
+                "VARIANT", 12, "DBTYPE_VARIANT", "An Automation VARIANT"),
 
         /**
          * Used by SQL Server for font size.
@@ -503,29 +503,29 @@ public class XmlaConstants
          * Used by SQL Server for colors, font flags and cell ordinal.
          */
         UI4(
-            "UNSIGNED_INTEGER", 19, "DBTYPE_UI4",
-            "A four-byte, unsigned integer"),
+                "UNSIGNED_INTEGER", 19, "DBTYPE_UI4",
+                "A four-byte, unsigned integer"),
 
         // The following values exactly match VARENUM
         // in Automation but cannot be used in VARIANT.
         I8(
-            "LARGE_INTEGER", 20, "DBTYPE_I8",
-            "An eight-byte, signed integer: LARGE_INTEGER"),
+                "LARGE_INTEGER", 20, "DBTYPE_I8",
+                "An eight-byte, signed integer: LARGE_INTEGER"),
 
         // The following values are not in VARENUM in OLE.
         WSTR(
-            "STRING", 130, "DBTYPE_WSTR",
-            "A null-terminated Unicode character string: wchar_t[length]; If "
-            + "DBTYPE_WSTR is used by itself, the number of bytes allocated "
-            + "for the string, including the null-termination character, is "
-            + "specified by cbMaxLen in the DBBINDING structure. If "
-            + "DBTYPE_WSTR is combined with DBTYPE_BYREF, the number of bytes "
-            + "allocated for the string, including the null-termination "
-            + "character, is at least the length of the string plus two. In "
-            + "either case, the actual length of the string is determined from "
-            + "the bound length value. The maximum length of the string is the "
-            + "number of allocated bytes divided by sizeof(wchar_t) and "
-            + "truncated to the nearest integer.");
+                "STRING", 130, "DBTYPE_WSTR",
+                "A null-terminated Unicode character string: wchar_t[length]; If "
+                        + "DBTYPE_WSTR is used by itself, the number of bytes allocated "
+                        + "for the string, including the null-termination character, is "
+                        + "specified by cbMaxLen in the DBBINDING structure. If "
+                        + "DBTYPE_WSTR is combined with DBTYPE_BYREF, the number of bytes "
+                        + "allocated for the string, including the null-termination "
+                        + "character, is at least the length of the string plus two. In "
+                        + "either case, the actual length of the string is determined from "
+                        + "the bound length value. The maximum length of the string is the "
+                        + "number of allocated bytes divided by sizeof(wchar_t) and "
+                        + "truncated to the nearest integer.");
 
 
         public final String userName;
@@ -535,7 +535,7 @@ public class XmlaConstants
         private String description;
 
         private static final Dictionary<DBType> DICTIONARY =
-            DictionaryImpl.forClass(DBType.class);
+                DictionaryImpl.forClass(DBType.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -548,11 +548,10 @@ public class XmlaConstants
         }
 
         DBType(
-            String userName,
-            int xmlaOrdinal,
-            String dbTypeIndicator,
-            String description)
-        {
+                String userName,
+                int xmlaOrdinal,
+                String dbTypeIndicator,
+                String description) {
             this.userName = userName;
             this.xmlaOrdinal = xmlaOrdinal;
             this.description = description;
@@ -574,21 +573,21 @@ public class XmlaConstants
 
     public enum Format implements XmlaConstant {
         Tabular(
-            "a flat or hierarchical rowset. Similar to the XML RAW format in "
-            + "SQL. The Format property should be set to Tabular for OLE DB "
-            + "for Data Mining commands."),
+                "a flat or hierarchical rowset. Similar to the XML RAW format in "
+                        + "SQL. The Format property should be set to Tabular for OLE DB "
+                        + "for Data Mining commands."),
         Multidimensional(
-            "Indicates that the result set will use the MDDataSet format "
-            + "(Execute method only)."),
+                "Indicates that the result set will use the MDDataSet format "
+                        + "(Execute method only)."),
         Native(
-            "The client does not request a specific format, so the provider "
-            + "may return the format  appropriate to the query. (The actual "
-            + "result type is identified by namespace of the result.)");
+                "The client does not request a specific format, so the provider "
+                        + "may return the format  appropriate to the query. (The actual "
+                        + "result type is identified by namespace of the result.)");
 
         private final String description;
 
         private static final Dictionary<Format> DICTIONARY =
-            DictionaryImpl.forClass(Format.class);
+                DictionaryImpl.forClass(Format.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -619,17 +618,17 @@ public class XmlaConstants
 
     public enum AxisFormat implements XmlaConstant {
         TupleFormat(
-            "The MDDataSet axis is made up of one or more CrossProduct "
-            + "elements."),
+                "The MDDataSet axis is made up of one or more CrossProduct "
+                        + "elements."),
         ClusterFormat(
-            "Analysis Services uses the TupleFormat format for this setting."),
+                "Analysis Services uses the TupleFormat format for this setting."),
         CustomFormat(
-            "The MDDataSet axis contains one or more Tuple elements.");
+                "The MDDataSet axis contains one or more Tuple elements.");
 
         private final String description;
 
         private static final XmlaConstant.Dictionary<AxisFormat> DICTIONARY =
-            DictionaryImpl.forClass(AxisFormat.class);
+                DictionaryImpl.forClass(AxisFormat.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -666,7 +665,9 @@ public class XmlaConstants
         DataOmitDefaultSlicer,
         DataIncludeDefaultSlicer;
 
-        /** The content type default value - shared across more than one file */
+        /**
+         * The content type default value - shared across more than one file
+         */
         public static final Content DEFAULT = SchemaData;
     }
 
@@ -679,72 +680,89 @@ public class XmlaConstants
         Sessions
     }
 
+    public static class LiteralConstants {
+
+        public static final int DBLITERAL_INVALID = 0;
+        public static final int DBLITERAL_BINARY_LITERAL = 1;
+        public static final int DBLITERAL_CATALOG_NAME = 2;
+        public static final int DBLITERAL_CATALOG_SEPARATOR = 3;
+        public static final int DBLITERAL_CHAR_LITERAL = 4;
+        public static final int DBLITERAL_COLUMN_ALIAS = 5;
+        public static final int DBLITERAL_COLUMN_NAME = 6;
+        public static final int DBLITERAL_CORRELATION_NAME = 7;
+        public static final int DBLITERAL_CURSOR_NAME = 8;
+        public static final int DBLITERAL_ESCAPE_PERCENT = 9;
+        public static final int DBLITERAL_ESCAPE_UNDERSCORE = 10;
+        public static final int DBLITERAL_INDEX_NAME = 11;
+        public static final int DBLITERAL_LIKE_PERCENT = 12;
+        public static final int DBLITERAL_LIKE_UNDERSCORE = 13;
+        public static final int DBLITERAL_PROCEDURE_NAME = 14;
+        public static final int DBLITERAL_QUOTE_PREFIX = 15;
+        public static final int DBLITERAL_SCHEMA_NAME = 16;
+        public static final int DBLITERAL_TABLE_NAME = 17;
+        public static final int DBLITERAL_TEXT_COMMAND = 18;
+        public static final int DBLITERAL_USER_NAME = 19;
+        public static final int DBLITERAL_VIEW_NAME = 20;
+        public static final int DBLITERAL_CUBE_NAME = 21;
+        public static final int DBLITERAL_DIMENSION_NAME = 22;
+        public static final int DBLITERAL_HIERARCHY_NAME = 23;
+        public static final int DBLITERAL_LEVEL_NAME = 24;
+        public static final int DBLITERAL_MEMBER_NAME = 25;
+        public static final int DBLITERAL_PROPERTY_NAME = 26;
+        public static final int DBLITERAL_SCHEMA_SEPARATOR = 27;
+        public static final int DBLITERAL_QUOTE_SUFFIX = 28;
+        public static final int DBLITERAL_ESCAPE_PERCENT_SUFFIX = 29;
+        public static final int DBLITERAL_ESCAPE_UNDERSCORE_SUFFIX = 30;
+
+    }
+
     public enum Literal implements XmlaConstant {
-        CATALOG_NAME(
-            2, null, 24, ".", "0123456789",
-            "A catalog name in a text command."),
-        CATALOG_SEPARATOR(3, ".", 0, null, null, null),
-        COLUMN_ALIAS(5, null, -1, "'\"[]", "0123456789", null),
-        COLUMN_NAME(6, null, -1, ".", "0123456789", null),
-        CORRELATION_NAME(7, null, -1, "'\"[]", "0123456789", null),
-        CUBE_NAME(21, null, -1, ".", "0123456789", null),
-        DIMENSION_NAME(22, null, -1, ".", "0123456789", null),
-        HIERARCHY_NAME(23, null, -1, ".", "0123456789", null),
-        LEVEL_NAME(24, null, -1, ".", "0123456789", null),
-        MEMBER_NAME(25, null, -1, ".", "0123456789", null),
-        PROCEDURE_NAME(14, null, -1, ".", "0123456789", null),
-        PROPERTY_NAME(26, null, -1, ".", "0123456789", null),
-        QUOTE(
-            15, "[", -1, null, null,
-            "The character used in a text command as the opening quote for "
-            + "quoting identifiers that contain special characters."),
-        QUOTE_SUFFIX(
-            28, "]", -1, null, null,
-            "The character used in a text command as the closing quote for "
-            + "quoting identifiers that contain special characters. 1.x "
-            + "providers that use the same character as the prefix and suffix "
-            + "may not return this literal value and can set the lt member of "
-            + "the DBLITERAL structure to DBLITERAL_INVALID if requested."),
-        TABLE_NAME(17, null, -1, ".", "0123456789", null),
-        TEXT_COMMAND(
-            18, null, -1, null, null,
-            "A text command, such as an SQL statement."),
-        USER_NAME(19, null, 0, null, null, null);
 
-        // Enum DBLITERALENUM and DBLITERALENUM20, OLEDB.H.
-        //
-        // public static final int DBLITERAL_INVALID   = 0,
-        //   DBLITERAL_BINARY_LITERAL    = 1,
-        //   DBLITERAL_CATALOG_NAME  = 2,
-        //   DBLITERAL_CATALOG_SEPARATOR = 3,
-        //   DBLITERAL_CHAR_LITERAL  = 4,
-        //   DBLITERAL_COLUMN_ALIAS  = 5,
-        //   DBLITERAL_COLUMN_NAME   = 6,
-        //   DBLITERAL_CORRELATION_NAME  = 7,
-        //   DBLITERAL_CURSOR_NAME   = 8,
-        //   DBLITERAL_ESCAPE_PERCENT    = 9,
-        //   DBLITERAL_ESCAPE_UNDERSCORE = 10,
-        //   DBLITERAL_INDEX_NAME    = 11,
-        //   DBLITERAL_LIKE_PERCENT  = 12,
-        //   DBLITERAL_LIKE_UNDERSCORE   = 13,
-        //   DBLITERAL_PROCEDURE_NAME    = 14,
-        //   DBLITERAL_QUOTE = 15,
-        //   DBLITERAL_QUOTE_PREFIX = DBLITERAL_QUOTE,
-        //   DBLITERAL_SCHEMA_NAME   = 16,
-        //   DBLITERAL_TABLE_NAME    = 17,
-        //   DBLITERAL_TEXT_COMMAND  = 18,
-        //   DBLITERAL_USER_NAME = 19,
-        //   DBLITERAL_VIEW_NAME = 20,
-        //   DBLITERAL_CUBE_NAME = 21,
-        //   DBLITERAL_DIMENSION_NAME    = 22,
-        //   DBLITERAL_HIERARCHY_NAME    = 23,
-        //   DBLITERAL_LEVEL_NAME    = 24,
-        //   DBLITERAL_MEMBER_NAME   = 25,
-        //   DBLITERAL_PROPERTY_NAME = 26,
-        //   DBLITERAL_SCHEMA_SEPARATOR  = 27,
-        //   DBLITERAL_QUOTE_SUFFIX  = 28;
+        CATALOG_NAME(DBLITERAL_CATALOG_NAME, null, 24, ".", "0123456789", "A catalog name in a text command."),
 
-        private int xmlaOrdinal;
+        CATALOG_SEPARATOR(DBLITERAL_CATALOG_SEPARATOR, ".", 1, null, null, null),
+
+        COLUMN_ALIAS(DBLITERAL_COLUMN_ALIAS, null, -1, "'\"[]", "0123456789", null),
+
+        COLUMN_NAME(DBLITERAL_COLUMN_NAME, null, -1, ".", "0123456789", null),
+
+        CORRELATION_NAME(DBLITERAL_CORRELATION_NAME, null, -1, "'\"[]", "0123456789", null),
+
+        PROCEDURE_NAME(DBLITERAL_PROCEDURE_NAME, null, -1, ".", "0123456789", null),
+
+        TABLE_NAME(DBLITERAL_TABLE_NAME, null, -1, ".", "0123456789", null),
+
+        TEXT_COMMAND(DBLITERAL_TEXT_COMMAND, null, 0, null, null, "A text command, such as an SQL statement."),
+
+        USER_NAME(DBLITERAL_USER_NAME, null, 0, null, null, null),
+
+        QUOTE_PREFIX(DBLITERAL_QUOTE_PREFIX, "[", 1, null, null, "The character used in a text command as the opening quote for "
+                + "quoting identifiers that contain special characters."),
+
+        CUBE_NAME(DBLITERAL_CUBE_NAME, null, -1, ".", "0123456789", null),
+
+        DIMENSION_NAME(DBLITERAL_DIMENSION_NAME, null, -1, ".", "0123456789", null),
+
+        HIERARCHY_NAME(DBLITERAL_HIERARCHY_NAME, null, -1, ".", "0123456789", null),
+
+        LEVEL_NAME(DBLITERAL_LEVEL_NAME, null, -1, ".", "0123456789", null),
+
+        MEMBER_NAME(DBLITERAL_MEMBER_NAME, null, -1, ".", "0123456789", null),
+
+        PROPERTY_NAME(DBLITERAL_PROPERTY_NAME, null, -1, ".", "0123456789", null),
+
+        QUOTE_SUFFIX(DBLITERAL_QUOTE_SUFFIX, "]", 1, null, null, "The character used in a text command as the closing quote for "
+                + "quoting identifiers that contain special characters. 1.x "
+                + "providers that use the same character as the prefix and suffix "
+                + "may not return this literal value and can set the lt member of "
+                + "the DBLITERAL structure to DBLITERAL_INVALID if requested."),
+
+        SCHEMA_NAME(DBLITERAL_SCHEMA_NAME, null, -1, ".", "0123456789", null),
+
+        SCHEMA_SEPARATOR(DBLITERAL_SCHEMA_SEPARATOR, ".", 1, null, null, null);
+
+        private final int xmlaOrdinal;
+
         private final String literalValue;
         private final int literalMaxLength;
         private final String literalInvalidChars;
@@ -752,7 +770,7 @@ public class XmlaConstants
         private final String description;
 
         private static final Dictionary<Literal> DICTIONARY =
-            DictionaryImpl.forClass(Literal.class);
+                DictionaryImpl.forClass(Literal.class);
 
         /**
          * Per {@link XmlaConstant}, returns a dictionary
@@ -765,13 +783,12 @@ public class XmlaConstants
         }
 
         Literal(
-            int xmlaOrdinal,
-            String literalValue,
-            int literalMaxLength,
-            String literalInvalidChars,
-            String literalInvalidStartingChars,
-            String description)
-        {
+                int xmlaOrdinal,
+                String literalValue,
+                int literalMaxLength,
+                String literalInvalidChars,
+                String literalInvalidStartingChars,
+                String description) {
             this.xmlaOrdinal = xmlaOrdinal;
             this.literalValue = literalValue;
             this.literalMaxLength = literalMaxLength;
@@ -800,16 +817,20 @@ public class XmlaConstants
             return literalMaxLength;
         }
 
+        public int getLiteralNameEnumValue() {
+            return xmlaOrdinal;
+        }
+
         public String xmlaName() {
             return "DBLITERAL_" + name();
         }
 
-        public String getDescription() {
-            return description;
-        }
-
         public int xmlaOrdinal() {
             return xmlaOrdinal;
+        }
+
+        public String getDescription() {
+            return description;
         }
     }
 
