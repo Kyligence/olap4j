@@ -5,7 +5,6 @@ VERSION.txt
 bin/
 dist/
 doc/olap4j_api.pdf
-lib/
 out/
 src/main/java/org/olap4j/driver/xmla/XmlaOlap4jDriverVersion.java
 src/main/java/org/olap4j/mdx/parser/impl/MdxParserImpl.java
