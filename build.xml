@@ -30,13 +30,11 @@
     <!-- Files that used to be generated. We continue to remove them, just in
          case someone is running on an old sandbox. -->
     <property name="old.generated.java.files"
-        value="
-src/org/olap4j/mdx/parser/impl/DefaultMdxParser.java,
+        value="src/main/java/org/olap4j/mdx/parser/impl/DefaultMdxParser.java,
 src/org/olap4j/mdx/parser/impl/DefaultMdxParserSym.java" />
 
     <property name="generated.java.files"
-        value="
-src/org/olap4j/mdx/parser/impl/MdxParserImpl.java,
+        value="src/main/java/org/olap4j/mdx/parser/impl/MdxParserImpl.java,
 src/org/olap4j/mdx/parser/impl/MdxParserImplTokenManager.java,
 src/org/olap4j/mdx/parser/impl/ParseException.java,
 src/org/olap4j/mdx/parser/impl/SimpleCharStream.java,
@@ -263,7 +261,7 @@ testsrc/**,
 foodmart/*.zip,
 foodmart/*.xml,
 simple-jndi/**,
-xmla-cache/**,
+lib/**,
 .settings/**
 .classpath,
 .project,
@@ -299,7 +297,7 @@ Created-By: ${java.version} (${java.vendor})
 Built-On: ${build.time}
 Built-By: ${user.name}
 Built-In: ${user.dir}</echo>
-        <echo file="${src.dir}/org/olap4j/driver/xmla/XmlaOlap4jDriverVersion.java">/*
+        <echo file="/src/main/java/org/olap4j/driver/xmla/XmlaOlap4jDriverVersion.java">/*
  * Project version information. Generated - do not modify.
  */
 package org.olap4j.driver.xmla;
@@ -320,7 +318,7 @@ class XmlaOlap4jDriverVersion {
 
     <target name="parser" depends="resolve,define-tasks">
         <javacc
-            target="${src.dir}/org/olap4j/mdx/parser/impl/MdxParser.jj"
+            target="/src/main/java/org/olap4j/mdx/parser/impl/MdxParser.jj"
             javacchome="${lib.dir}"/>
     </target>
 
@@ -528,7 +526,7 @@ class XmlaOlap4jDriverVersion {
         <javadoc sourcepath="${src.dir}" classpathref="javadoc.classpath"
             destdir="${javadoc.dir}" packagenames="org.olap4j.*"
             excludepackagenames="org.olap4j.impl.*,org.olap4j.mdx.parser.impl.*,org.olap4j.sample.*"
-            overview="${src.dir}/overview.html"
+            overview="/overview.html"
             footer="&lt;a href=&quot;http://sourceforge.net/projects/olap4j&quot;&gt;&lt;img src=&quot;http://sourceforge.net/sflogo.php?group_id=168953&#38;type=1&quot; width=&quot;88&quot; height=&quot;31&quot; border=&quot;0&quot; alt=&quot;SourceForge.net_Logo&quot;&gt;&lt;/a&gt;"
             author="true" source="1.5" access="public"
             Windowtitle="olap4j, version ${project.revision}" additionalparam="-linksource">
@@ -547,7 +545,7 @@ class XmlaOlap4jDriverVersion {
         <mkdir dir="${javadoc.dir}" />
         <delete quiet="true" file="${javadoc.dir}/index.html" />
         <javadoc sourcepath="${src.dir}:${testsrc.dir}" classpathref="test.classpath"
-            destdir="${javadoc.dir}" packagenames="org.olap4j.*" overview="${src.dir}/overview.html"
+            destdir="${javadoc.dir}" packagenames="org.olap4j.*" overview="/overview.html"
             footer="&lt;a href=&quot;http://sourceforge.net/projects/olap4j&quot;&gt;&lt;img src=&quot;http://sourceforge.net/sflogo.php?group_id=168953&#38;type=1&quot; width=&quot;88&quot; height=&quot;31&quot; border=&quot;0&quot; alt=&quot;SourceForge.net_Logo&quot;&gt;&lt;/a&gt;"
             author="true" source="1.5" access="private"
             Windowtitle="olap4j, version ${project.revision}">
@@ -571,7 +569,7 @@ class XmlaOlap4jDriverVersion {
         <javadoc sourcepath="${src.dir}" classpathref="javadoc.classpath"
             destdir="${javadoc.dir}" packagenames="org.olap4j.*"
             excludepackagenames="org.olap4j.impl.*,org.olap4j.mdx.parser.impl.*,org.olap4j.sample.*"
-            overview="${src.dir}/overview.html"
+            overview="/overview.html"
             footer="&lt;a href=&quot;http://sourceforge.net/projects/olap4j&quot;&gt;&lt;img src=&quot;http://sourceforge.net/sflogo.php?group_id=168953&#38;type=1&quot; width=&quot;88&quot; height=&quot;31&quot; border=&quot;0&quot; alt=&quot;SourceForge.net_Logo&quot;&gt;&lt;/a&gt;"
             author="true" source="1.5" access="public"
             Windowtitle="olap4j, version ${project.revision}" additionalparam="-linksource">
@@ -598,10 +596,10 @@ class XmlaOlap4jDriverVersion {
 
     <target name="javadoc-pdf" depends="clean-stray-package-html">
         <javadoc sourcepath="${src.dir}" classpathref="javadoc.classpath"
-            packagenames="org.olap4j.*"
-            excludepackagenames="org.olap4j.impl.*,org.olap4j.mdx.parser.impl.*,org.olap4j.sample.*"
-            overview="${src.dir}/overview.html" author="true" source="1.5"
-            access="public">
+                 packagenames="org.olap4j.*"
+                 excludepackagenames="org.olap4j.impl.*,org.olap4j.mdx.parser.impl.*,org.olap4j.sample.*"
+                 overview="/overview.html" author="true" source="1.5"
+                 access="public">
             <doclet name="com.tarsec.javadoc.pdfdoclet.PDFDoclet" path="${testlib.dir}/pdfdoclet.jar">
                 <param name="-pdf" value="${basedir}/doc/olap4j_api.pdf" />
                 <param name="-config" value="${basedir}/doc/pdfdoclet.properties" />
