@@ -72,12 +72,17 @@
 
   <distributionManagement>
     <repository>
-      <uniqueVersion>false</uniqueVersion>
-      <id>pentaho</id>
-      <name>Pentaho Open Repository</name>
-      <url>http://repository.pentaho.org/artifactory/pentaho</url>
+      <id>repo-ofs.kyligence.tech</id>
+      <name>kyligence-repository</name>
+      <url>http://repo-ofs.kyligence.tech:8081/repository/maven-releases/</url>
       <layout>default</layout>
     </repository>
+    <snapshotRepository>
+      <id>repo-ofs.kyligence.tech.snapshot</id>
+      <name>kyligence-repository-snapshot</name>
+      <url>http://repo-ofs.kyligence.tech:8081/repository/maven-snapshots/</url>
+      <layout>default</layout>
+    </snapshotRepository>
   </distributionManagement>
 
   <properties>
