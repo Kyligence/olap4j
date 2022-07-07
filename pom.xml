@@ -72,15 +72,15 @@
 
   <distributionManagement>
     <repository>
-      <id>repo-ofs.kyligence.tech</id>
-      <name>kyligence-repository</name>
-      <url>http://repo-ofs.kyligence.tech:8081/repository/maven-releases/</url>
+      <id>${repository.id}</id>
+      <url>${repository.url}</url>
+      <name>${repository.name}</name>
       <layout>default</layout>
     </repository>
     <snapshotRepository>
-      <id>repo-ofs.kyligence.tech.snapshot</id>
-      <name>kyligence-repository-snapshot</name>
-      <url>http://repo-ofs.kyligence.tech:8081/repository/maven-snapshots/</url>
+      <id>${repository.id.snapshots}</id>
+      <url>${repository.url.snapshots}</url>
+      <name>${repository.name.snapshots}</name>
       <layout>default</layout>
     </snapshotRepository>
   </distributionManagement>
